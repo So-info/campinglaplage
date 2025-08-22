@@ -133,6 +133,17 @@
       .parallax-tilt{transform:none!important}
       .wheel{animation:none}
     }
+/* Espace pour le header fixe (h-20 = 5rem) + safe area iOS */
+:root { --header-h: 5rem; }
+
+body{
+  padding-top: calc(var(--header-h) + var(--sat));
+}
+
+/* Quand on clique sur un lien d'ancre, éviter que le titre passe sous le header */
+section[id]{
+  scroll-margin-top: calc(var(--header-h) + var(--sat));
+}
 
     /* Lock scroll when menu open */
     body[data-menu-open="true"]{overflow:hidden;touch-action:none}
@@ -910,6 +921,7 @@
   </script>
 </body>
 </html>
+
 
 
 

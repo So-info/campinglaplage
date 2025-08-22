@@ -2,7 +2,10 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
   <meta name="theme-color" content="#0d9488" />
   <title>Camping La Plage Argelès ★★★</title>
   <meta name="description" content="Camping ★★★ à Argelès-sur-Mer, à 200 m de la plage. Emplacements ombragés, mobil-homes confort, lodges glamping. Réservez votre séjour.">
@@ -35,9 +38,9 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,700;800&display=swap" rel="stylesheet" />
 
   <style>
     /* Reset + safe areas */
@@ -47,7 +50,11 @@
     :root{--sat:env(safe-area-inset-top);--sab:env(safe-area-inset-bottom);--rx:0deg;--ry:0deg}
 
     /* Typo */
-    body{font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:17px;line-height:1.65;background:#f8fafc;color:#0f172a;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    body{
+      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      font-size:17px;line-height:1.65;background:#f8fafc;color:#0f172a;
+      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale
+    }
     h1,h2,h3,h4{font-family:"Fraunces",serif;letter-spacing:-0.01em;line-height:1.1;color:#0b1220}
     input,select,textarea,button{font:inherit;font-size:16px}
 
@@ -63,6 +70,7 @@
     .btn-outline:hover{background:rgba(13,148,136,.06);transform:translateY(-2px)}
     .btn-white{color:#111827;background:rgba(255,255,255,.92);border:1px solid #e5e7eb}
 
+    /* Header */
     header.gradient-bg{position:fixed;top:0;left:0;right:0;z-index:50;background:linear-gradient(to right,#0d9488,#06b6d4,#2563eb)!important;padding-top:max(0px,var(--sat));overflow:hidden}
     header.gradient-bg::after{content:"";position:absolute;top:0;left:-150%;width:50%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-25deg);animation:shine 6s infinite}
     @keyframes shine{0%{left:-150%}50%,100%{left:150%}}
@@ -89,12 +97,12 @@
     @keyframes wheel{0%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,14px)}}
     .shape-divider{position:absolute;left:0;right:0;bottom:-1px;overflow:hidden}
     .shape-divider svg{display:block;width:100%;height:80px}
-    @media (max-width:640px){.aurora span{filter:blur(40px);opacity:.55}}
 
     /* Galerie */
     .gallery-card{position:relative;overflow:hidden;border-radius:1rem}
     .gallery-card img{display:block;width:100%;height:100%;transition:transform .5s cubic-bezier(.22,.61,.36,1)}
     .gallery-card:hover img{transform:scale(1.06)}
+    @media (hover:none){ .gallery-card:hover img{ transform:none } } /* confort mobile */
     .gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65),rgba(0,0,0,.2),transparent);opacity:0;transition:opacity .3s}
     .gallery-card:hover .gallery-overlay,.gallery-card:focus-within .gallery-overlay{opacity:1}
     .gallery-caption{position:absolute;left:1rem;bottom:1rem;color:#fff;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.5)}
@@ -116,8 +124,15 @@
     #reviews-track{overflow-y:hidden;max-width:100%}
     .glass{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);backdrop-filter:saturate(140%) blur(14px);-webkit-backdrop-filter:saturate(140%) blur(14px);box-shadow:0 24px 60px rgba(0,0,0,.25)}
 
+    /* Sections lointaines = performant */
+    section[id]{content-visibility:auto;contain-intrinsic-size:1px 900px}
+
     /* Accessibilité motion */
-    @media (prefers-reduced-motion: reduce){.aurora span{animation:none}.parallax-tilt{transform:none!important}.wheel{animation:none}}
+    @media (prefers-reduced-motion: reduce){
+      .aurora span{animation:none}
+      .parallax-tilt{transform:none!important}
+      .wheel{animation:none}
+    }
 
     /* Lock scroll when menu open */
     body[data-menu-open="true"]{overflow:hidden;touch-action:none}
@@ -129,7 +144,7 @@
   <header class="gradient-bg text-white shadow-xl">
     <div class="mx-auto max-w-7xl px-6 flex items-center justify-between h-20 relative">
       <a href="#accueil" class="flex items-center gap-3">
-        <div class="w-12 h-12 rounded-full bg-white flex items-center justify-content-center text-xl font-bold shadow-md text-teal-700">LA</div>
+        <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-xl font-bold shadow-md text-teal-700">LA</div>
         <div>
           <p class="text-xl font-bold leading-tight tracking-wide">Camping La Plage</p>
           <p class="text-xs text-gray-100">Argelès-sur-Mer • ★★★</p>
@@ -148,10 +163,8 @@
 
       <!-- Mobile trigger -->
       <div class="md:hidden">
-        <button id="menuToggle" class="p-2 rounded-md bg-teal-800 hover:bg-teal-900 focus:outline-none" aria-label="Ouvrir le menu" aria-haspopup="true" aria-expanded="false">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
+        <button id="menuToggle" class="p-2 rounded-md bg-teal-800 hover:bg-teal-900 focus:outline-none" aria-label="Ouvrir le menu" aria-haspopup="true" aria-expanded="false" aria-controls="mobileMenu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
       </div>
     </div>
@@ -182,16 +195,25 @@
 
   <!-- HERO -->
   <section id="accueil" class="hero-wrap text-white">
-    <video class="hero-video" autoplay muted loop playsinline poster="img/hero-fallback.jpg">
+    <!-- Image prioritaire pour mobile -->
+    <picture class="absolute inset-0 sm:hidden">
+      <source srcset="img/hero-1280.avif" type="image/avif" />
+      <source srcset="img/hero-1280.webp" type="image/webp" />
+      <img src="img/hero-fallback.jpg" alt="" class="w-full h-full object-cover" fetchpriority="high" decoding="sync">
+    </picture>
+    <!-- Vidéo à partir de sm: -->
+    <video class="hero-video hidden sm:block" autoplay muted loop playsinline poster="img/hero-fallback.jpg">
       <source src="img/videoplayback.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
 
+    <!-- Aurora -->
     <div class="aurora" aria-hidden="true">
       <span class="b1"></span><span class="b2"></span><span class="b3"></span>
     </div>
 
     <div class="hero-grid mx-auto max-w-7xl px-4 grid lg:grid-cols-12 gap-10 items-center min-h-[calc(100svh-5rem)] lg:min-h-[calc(100vh-5rem)]">
+      <!-- Colonne gauche -->
       <div class="lg:col-span-7 parallax-tilt">
         <span class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] sm:text-xs uppercase tracking-wider font-semibold bg-white/15 ring-1 ring-white/30">
           ★★★ Argelès-sur-Mer • 200 m de la mer
@@ -212,6 +234,7 @@
         </div>
       </div>
 
+      <!-- Colonne droite -->
       <div class="lg:col-span-5">
         <div class="glass rounded-3xl p-6 sm:p-8">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 ring-1 ring-white/30 text-sm mb-4">
@@ -252,7 +275,13 @@
       <div class="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
         <!-- Emplacements nature -->
         <article class="bg-white border rounded-3xl shadow-md hover:shadow-xl overflow-hidden transform hover:-translate-y-2 hover:scale-[1.02] transition duration-300">
-          <img src="img/emplacement.jpg" alt="Emplacements nature ombragés pour tentes, caravanes et camping-cars" class="w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" decoding="async">
+          <img
+            src="img/emplacement.jpg"
+            srcset="img/emplacement-640.webp 640w, img/emplacement-1024.webp 1024w, img/emplacement-1600.webp 1600w"
+            sizes="(min-width:1024px) 33vw,(min-width:640px) 50vw, 100vw"
+            alt="Emplacements nature ombragés pour tentes, caravanes et camping-cars"
+            class="w-full h-48 sm:h-56 md:h-64 object-cover"
+            loading="lazy" decoding="async">
           <div class="p-6 sm:p-8">
             <div class="flex items-center gap-3 mb-3">
               <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white text-teal-700 ring-1 ring-teal-200">
@@ -273,7 +302,13 @@
 
         <!-- Mobil-homes -->
         <article class="bg-white border rounded-3xl shadow-md hover:shadow-xl overflow-hidden transform hover:-translate-y-2 hover:scale-[1.02] transition duration-300">
-          <img src="img/mobilhome.jpg" alt="Mobil-home confortable avec terrasse en bois et climatisation" class="w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" decoding="async">
+          <img
+            src="img/mobilhome.jpg"
+            srcset="img/mobilhome-640.webp 640w, img/mobilhome-1024.webp 1024w, img/mobilhome-1600.webp 1600w"
+            sizes="(min-width:1024px) 33vw,(min-width:640px) 50vw, 100vw"
+            alt="Mobil-home confortable avec terrasse en bois et climatisation"
+            class="w-full h-48 sm:h-56 md:h-64 object-cover"
+            loading="lazy" decoding="async">
           <div class="p-6 sm:p-8">
             <div class="flex items-center gap-3 mb-3">
               <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white text-teal-700 ring-1 ring-teal-200">
@@ -294,7 +329,13 @@
 
         <!-- Lodges -->
         <article class="bg-white border rounded-3xl shadow-md hover:shadow-xl overflow-hidden transform hover:-translate-y-2 hover:scale-[1.02] transition duration-300">
-          <img src="img/lodge.jpg" alt="Lodge nature type glamping au cœur des pins" class="w-full h-48 sm:h-56 md:h-64 object-cover" loading="lazy" decoding="async">
+          <img
+            src="img/lodge.jpg"
+            srcset="img/lodge-640.webp 640w, img/lodge-1024.webp 1024w, img/lodge-1600.webp 1600w"
+            sizes="(min-width:1024px) 33vw,(min-width:640px) 50vw, 100vw"
+            alt="Lodge nature type glamping au cœur des pins"
+            class="w-full h-48 sm:h-56 md:h-64 object-cover"
+            loading="lazy" decoding="async">
           <div class="p-6 sm:p-8">
             <div class="flex items-center gap-3 mb-3">
               <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white text-teal-700 ring-1 ring-teal-200">
@@ -326,32 +367,68 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         <a href="#g1" class="gallery-card block border shadow-md focus:outline-none focus:ring-4 ring-yellow-300">
-          <img src="img/Philomène-Reis-La-Plage-Activités (23).JPG.jpg" alt="Animations en journée au Camping La Plage" loading="lazy" decoding="async" class="w-full h-56 sm:h-72 object-cover">
+          <img
+            src="img/Philomène-Reis-La-Plage-Activités (23).JPG.jpg"
+            srcset="img/Philomène-Reis-La-Plage-Activités (23)-640.webp 640w, img/Philomène-Reis-La-Plage-Activités (23)-1024.webp 1024w"
+            sizes="(min-width:1024px) 33vw,(min-width:640px) 50vw, 100vw"
+            alt="Animations en journée au Camping La Plage"
+            loading="lazy" decoding="async"
+            class="w-full h-56 sm:h-72 object-cover">
           <span class="gallery-overlay"></span><span class="gallery-caption">Animations & activités</span>
           <span class="gallery-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg></span>
         </a>
         <a href="#g2" class="gallery-card block border shadow-md focus:outline-none focus:ring-4 ring-yellow-300">
-          <img src="img/Gallerie_22.jpg" alt="Allées ombragées au cœur des pins" loading="lazy" decoding="async" class="w-full h-56 sm:h-72 object-cover">
+          <img
+            src="img/Gallerie_22.jpg"
+            srcset="img/Gallerie_22-640.webp 640w, img/Gallerie_22-1024.webp 1024w"
+            sizes="(min-width:1024px) 33vw,(min-width:640px) 50vw, 100vw"
+            alt="Allées ombragées au cœur des pins"
+            loading="lazy" decoding="async"
+            class="w-full h-56 sm:h-72 object-cover">
           <span class="gallery-overlay"></span><span class="gallery-caption">Sous les pins</span>
           <span class="gallery-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg></span>
         </a>
         <a href="#g3" class="gallery-card block border shadow-md focus:outline-none focus:ring-4 ring-yellow-300">
-          <img src="img/Camping-La-Plage-Kelimaj-le-Snack (1)_0.jpg" alt="Espace snack convivial" loading="lazy" decoding="async" class="w-full h-56 sm:h-72 object-cover">
+          <img
+            src="img/Camping-La-Plage-Kelimaj-le-Snack (1)_0.jpg"
+            srcset="img/Camping-La-Plage-Kelimaj-le-Snack (1)_0-640.webp 640w, img/Camping-La-Plage-Kelimaj-le-Snack (1)_0-1024.webp 1024w"
+            sizes="(min-width:1024px) 33vw,(min-width:640px) 50vw, 100vw"
+            alt="Espace snack convivial"
+            loading="lazy" decoding="async"
+            class="w-full h-56 sm:h-72 object-cover">
           <span class="gallery-overlay"></span><span class="gallery-caption">Snack & détente</span>
           <span class="gallery-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg></span>
         </a>
         <a href="#g4" class="gallery-card block border shadow-md focus:outline-none focus:ring-4 ring-yellow-300">
-          <img src="img/Camping-La-Plage-Kelimaj-La-Piscine (19).jpg" alt="Piscine du camping" loading="lazy" decoding="async" class="w-full h-56 sm:h-72 object-cover">
+          <img
+            src="img/Camping-La-Plage-Kelimaj-La-Piscine (19).jpg"
+            srcset="img/Camping-La-Plage-Kelimaj-La-Piscine (19)-640.webp 640w, img/Camping-La-Plage-Kelimaj-La-Piscine (19)-1024.webp 1024w"
+            sizes="(min-width:1024px) 33vw,(min-width:640px) 50vw, 100vw"
+            alt="Piscine du camping"
+            loading="lazy" decoding="async"
+            class="w-full h-56 sm:h-72 object-cover">
           <span class="gallery-overlay"></span><span class="gallery-caption">Piscine</span>
           <span class="gallery-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg></span>
         </a>
         <a href="#g5" class="gallery-card block border shadow-md focus:outline-none focus:ring-4 ring-yellow-300">
-          <img src="img/Camping-La-Plage-Kelimaj-Aire-de-jeux-enfants (7).jpg" alt="Aire de jeux pour enfants" loading="lazy" decoding="async" class="w-full h-56 sm:h-72 object-cover">
+          <img
+            src="img/Camping-La-Plage-Kelimaj-Aire-de-jeux-enfants (7).jpg"
+            srcset="img/Camping-La-Plage-Kelimaj-Aire-de-jeux-enfants (7)-640.webp 640w, img/Camping-La-Plage-Kelimaj-Aire-de-jeux-enfants (7)-1024.webp 1024w"
+            sizes="(min-width:1024px) 33vw,(min-width:640px) 50vw, 100vw"
+            alt="Aire de jeux pour enfants"
+            loading="lazy" decoding="async"
+            class="w-full h-56 sm:h-72 object-cover">
           <span class="gallery-overlay"></span><span class="gallery-caption">Aire de jeux</span>
           <span class="gallery-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg></span>
         </a>
         <a href="#g6" class="gallery-card block border shadow-md focus:outline-none focus:ring-4 ring-yellow-300">
-          <img src="img/2019_Vue aérienne depuis le Camping La Plage Argelès_06.jpg" alt="Vue aérienne du camping à proximité de la mer" loading="lazy" decoding="async" class="w-full h-56 sm:h-72 object-cover">
+          <img
+            src="img/2019_Vue aérienne depuis le Camping La Plage Argelès_06.jpg"
+            srcset="img/2019_Vue aérienne depuis le Camping La Plage Argelès_06-640.webp 640w, img/2019_Vue aérienne depuis le Camping La Plage Argelès_06-1024.webp 1024w"
+            sizes="(min-width:1024px) 33vw,(min-width:640px) 50vw, 100vw"
+            alt="Vue aérienne du camping à proximité de la mer"
+            loading="lazy" decoding="async"
+            class="w-full h-56 sm:h-72 object-cover">
           <span class="gallery-overlay"></span><span class="gallery-caption">Vue aérienne</span>
           <span class="gallery-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg></span>
         </a>
@@ -604,7 +681,10 @@
               <span class="absolute left-3 top-10 pointer-events-none">
                 <svg viewBox="0 0 24 24" class="w-5 h-5 text-gray-400"><path fill="currentColor" d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 12.8 12.8 0 0 0 3.3.45 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 7a1 1 0 0 1 1-1h3.6a1 1 0 0 1 1 1 12.8 12.8 0 0 0 .45 3.3 1 1 0 0 1-.25 1Z"/></svg>
               </span>
-              <input id="telephone" name="Téléphone" type="tel" inputmode="tel" pattern="^(?:\\+33\\s?|0)[1-9](?:[\\s\\.\\-]?\\d{2}){4}$" class="input-base w-full mt-1 pl-10 placeholder-gray-400" placeholder="+33 6 12 34 56 78">
+              <input id="telephone" name="Téléphone" type="tel" inputmode="tel"
+                     pattern="^(?:\+33\s?|0)[1-9](?:[\s\.\-]?\d{2}){4}$"
+                     class="input-base w-full mt-1 pl-10 placeholder-gray-400"
+                     placeholder="+33 6 12 34 56 78">
               <p class="mt-1 text-xs text-gray-500">Format FR accepté (ex. 06 12 34 56 78 ou +33 6 12 34 56 78).</p>
             </div>
           </div>
@@ -697,16 +777,17 @@
     (function(){
       const toggle = document.getElementById('menuToggle');
       const panel  = document.getElementById('mobileMenu');
-      const closeEls = panel?.querySelectorAll('[data-close-menu]') || [];
-      const open = ()=>{ panel.classList.remove('hidden'); document.body.dataset.menuOpen = "true"; toggle?.setAttribute('aria-expanded','true'); }
-      const close = ()=>{ panel.classList.add('hidden'); delete document.body.dataset.menuOpen; toggle?.setAttribute('aria-expanded','false'); }
+      if(!toggle || !panel) return;
+      const closeEls = panel.querySelectorAll('[data-close-menu]');
+      const open = ()=>{ panel.classList.remove('hidden'); document.body.dataset.menuOpen = "true"; toggle.setAttribute('aria-expanded','true'); }
+      const close = ()=>{ panel.classList.add('hidden'); delete document.body.dataset.menuOpen; toggle.setAttribute('aria-expanded','false'); }
 
-      toggle?.addEventListener('click', ()=> panel.classList.contains('hidden') ? open() : close());
+      toggle.addEventListener('click', ()=> panel.classList.contains('hidden') ? open() : close());
       closeEls.forEach(el=> el.addEventListener('click', close));
       document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && !panel.classList.contains('hidden')) close(); });
     })();
 
-    // --- Parallax tilt léger sur la colonne de gauche (optionnel)
+    // --- Parallax tilt léger (optionnel)
     (function(){
       const el = document.querySelector('.parallax-tilt');
       if(!el) return;
@@ -721,9 +802,20 @@
           document.documentElement.style.setProperty('--rx', (-y*4)+'deg');
         });
       }
-      function reset(){ document.documentElement.style.setProperty('--ry','0deg'); document.documentElement.style.setProperty('--rx','0deg'); }
+      function reset(){
+        document.documentElement.style.setProperty('--ry','0deg');
+        document.documentElement.style.setProperty('--rx','0deg');
+      }
       el.addEventListener('pointermove', onMove);
       el.addEventListener('pointerleave', reset);
+    })();
+
+    // --- Respect du prefers-reduced-motion pour la vidéo
+    (function(){
+      const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if(reduce){
+        document.querySelectorAll('video[autoplay]').forEach(v=>{ v.removeAttribute('autoplay'); v.pause(); });
+      }
     })();
 
     // --- Dates min + envoi Formspree avec fallback mailto
@@ -750,21 +842,24 @@
 
       form.addEventListener('submit', async function(e){
         e.preventDefault();
-        if (form.querySelector('input[name="website"]')?.value) return; // honeypot
+        // Honeypot
+        if (form.querySelector('input[name="website"]')?.value) return;
+        // Consent
         if (!document.getElementById('consent').checked){
           alert("Merci d’accepter la mention RGPD.");
           return;
         }
+        // Prépare les données lisibles
         const data = new FormData(form);
         const lines = [];
         for (const [k, v] of data.entries()){
           if (!v || k === 'website') continue;
           lines.push(`${k}: ${v}`);
         }
-        const plainText = lines.join('\\n');
+        const plainText = lines.join('\n');
 
-        // Fallback mailto si l'endpoint n'est pas configuré
-        if (!endpoint || /\\/XXXXX$/.test(endpoint)){
+        // Fallback mailto si pas d'endpoint configuré
+        if (!endpoint || /\/XXXXX$/.test(endpoint)){
           const to = 'contact@camping-laplage-argeles.fr';
           const subject = encodeURIComponent('Demande de renseignements - Camping La Plage Argelès');
           const body = encodeURIComponent(plainText);
@@ -794,7 +889,7 @@
             statusEl.textContent = 'Merci ! Votre demande a bien été envoyée. Nous revenons vers vous rapidement.';
             statusEl.className = 'mt-4 text-sm rounded-lg bg-green-50 text-green-800 border border-green-200 p-3';
           } else {
-            statusEl.textContent = "Oups, l’envoi a échoué. Vous pouvez réessayer ou nous écrire à contact@camping-laplage-argeles.fr.";
+            statusEl.textContent = "Oups, l’envoi a échoué. Vous pouvez réessayer ou nous écrire à contact@camping-laplage-argelès.fr.";
             statusEl.className = 'mt-4 text-sm rounded-lg bg-red-50 text-red-800 border border-red-200 p-3';
           }
         } catch(err){

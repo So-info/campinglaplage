@@ -207,15 +207,23 @@ section[id]{
   <!-- HERO -->
   <section id="accueil" class="hero-wrap text-white">
     <!-- Image prioritaire pour mobile -->
-    <picture class="absolute inset-0 sm:hidden">
+  <picture class="absolute inset-0 hidden">
       <source srcset="img/hero-1280.avif" type="image/avif" />
       <source srcset="img/hero-1280.webp" type="image/webp" />
       <img src="img/hero-fallback.jpg" alt="" class="w-full h-full object-cover" fetchpriority="high" decoding="sync">
     </picture>
     <!-- Vidéo à partir de sm: -->
-    <video class="hero-video hidden sm:block" autoplay muted loop playsinline poster="img/hero-fallback.jpg">
-      <source src="img/videoplayback.mp4" type="video/mp4">
-    </video>
+<video
+  class="hero-video block"   <!-- au lieu de hidden sm:block -->
+  autoplay
+  muted
+  playsinline
+  loop
+  preload="auto"
+  poster="img/hero-fallback.jpg"
+>
+  <source src="img/videoplayback.mp4" type="video/mp4" />
+</video>
     <div class="hero-overlay"></div>
 
     <!-- Aurora -->
@@ -921,6 +929,7 @@ section[id]{
   </script>
 </body>
 </html>
+
 
 
 

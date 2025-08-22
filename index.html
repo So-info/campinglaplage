@@ -204,27 +204,35 @@ section[id]{
     </div>
   </header>
 
-  <!-- HERO -->
-  <section id="accueil" class="hero-wrap text-white">
-    <!-- Image prioritaire pour mobile -->
-  <picture class="absolute inset-0 hidden">
-      <source srcset="img/hero-1280.avif" type="image/avif" />
-      <source srcset="img/hero-1280.webp" type="image/webp" />
-      <img src="img/hero-fallback.jpg" alt="" class="w-full h-full object-cover" fetchpriority="high" decoding="sync">
-    </picture>
-    <!-- Vidéo à partir de sm: -->
-<video
-  class="hero-video block"   <!-- au lieu de hidden sm:block -->
-  autoplay
-  muted
-  playsinline
-  loop
-  preload="auto"
-  poster="img/hero-fallback.jpg"
->
-  <source src="img/videoplayback.mp4" type="video/mp4" />
-</video>
-    <div class="hero-overlay"></div>
+<!-- HERO -->
+<section id="accueil" class="hero-wrap text-white">
+  <!-- Image de secours (cachée car la vidéo est affichée partout) -->
+  <picture class="absolute inset-0 hidden" aria-hidden="true">
+    <source srcset="img/hero-1280.avif" type="image/avif" />
+    <source srcset="img/hero-1280.webp" type="image/webp" />
+    <img src="img/hero-fallback.jpg" alt="" class="w-full h-full object-cover" decoding="async">
+  </picture>
+
+  <!-- Vidéo de fond visible sur mobile et desktop -->
+  <!-- (anciennement : hidden sm:block) -->
+  <video
+    class="hero-video block"
+    autoplay
+    muted
+    playsinline
+    webkit-playsinline
+    loop
+    preload="auto"
+    poster="img/hero-fallback.jpg"
+    aria-hidden="true"
+    tabindex="-1"
+  >
+    <source src="img/videoplayback.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-overlay" aria-hidden="true"></div>
+</section>
+
 
     <!-- Aurora -->
     <div class="aurora" aria-hidden="true">
@@ -929,6 +937,7 @@ section[id]{
   </script>
 </body>
 </html>
+
 
 
 

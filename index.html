@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camping La Plage Argelès ★★★</title>
+  <meta name="description" content="Camping ★★★ à Argelès-sur-Mer, à 200 m de la plage. Emplacements ombragés, mobil-homes confort, lodges glamping. Réservez votre séjour.">
+
+  <!-- JSON-LD Campground -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Campground",
+    "name":"Camping La Plage Argelès",
+    "image":"https://ton-site.fr/img/vue-aerienne-camping-la-plage-argeles-06.jpg",
+    "description":"Camping ★★★ familial à Argelès-sur-Mer, à 200m de la plage. Emplacements, mobil-homes et lodges nature.",
+    "address":{"@type":"PostalAddress","streetAddress":"Chemin de la Plage","addressLocality":"Argelès-sur-Mer","postalCode":"66700","addressCountry":"FR"},
+    "geo":{"@type":"GeoCoordinates","latitude":42.5448,"longitude":3.0314},
+    "telephone":"+33-4-00-00-00-00",
+    "email":"contact@camping-laplage-argeles.fr",
+    "url":"https://ton-site.fr",
+    "starRating":{"@type":"Rating","ratingValue":3,"bestRating":5},
+    "aggregateRating":{"@type":"AggregateRating","ratingValue":4.3,"reviewCount":214},
+    "amenityFeature":[
+      {"@type":"LocationFeatureSpecification","name":"Piscine","value":true},
+      {"@type":"LocationFeatureSpecification","name":"Accès plage","value":true},
+      {"@type":"LocationFeatureSpecification","name":"Mobil-homes","value":true},
+      {"@type":"LocationFeatureSpecification","name":"Lodges glamping","value":true}
+    ]
+  }
+  </script>
+
+  <!-- Tailwind v3 (Play CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Inter (texte) + Fraunces (titres) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- Reset horizontal scroll --- */
+    *,*::before,*::after{ box-sizing:border-box; }
+    html,body{ width:100%; overflow-x:hidden; }
+    html{ scroll-behavior:smooth; }
+
+    /* --- TYPO ULTRA LISIBLE --- */
+    body{
+      font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      font-size:17px; line-height:1.65;
+      background:#f8fafc;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; text-rendering:optimizeLegibility;
+      color:#0f172a; /* slate-900 */
+    }
+    h1,h2,h3,h4{
+      font-family:"Fraunces",serif;
+      letter-spacing:-0.01em;
+      line-height:1.1;
+      color:#0b1220; /* encore un peu plus foncé */
+    }
+    input,select,textarea,button{ font-family:inherit; }
+
+    .gradient-primary{background:linear-gradient(135deg,#0d9488,#06b6d4)}
+    .gradient-secondary{background:linear-gradient(135deg,#10b981,#3b82f6)}
+
+    header.gradient-bg{position:fixed;top:0;left:0;right:0;z-index:50;background:linear-gradient(to right,#0d9488,#06b6d4,#2563eb)!important;overflow:hidden}
+    header.gradient-bg::after{content:"";position:absolute;top:0;left:-150%;width:50%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-25deg);animation:shine 6s infinite}
+    @keyframes shine{0%{left:-150%}50%,100%{left:150%}}
+
+    .pulse-button{animation:pulse 2.5s infinite}
+    @keyframes pulse{
+      0%{transform:scale(1);box-shadow:0 0 0 0 rgba(251,191,36,.7)}
+      70%{transform:scale(1.05);box-shadow:0 0 0 20px rgba(251,191,36,0)}
+      100%{transform:scale(1);box-shadow:0 0 0 0 rgba(251,191,36,0)}
+    }
+
+    /* --- Boutons réutilisables --- */
+    :root{
+      --teal-600:#0d9488; --teal-700:#0f766e; --cyan-500:#06b6d4; --cyan-600:#0891b2;
+      --yellow-300:#fde68a; --yellow-400:#fbbf24; --ring: rgba(45,212,191,.35);
+    }
+    .btn{ display:inline-flex; align-items:center; justify-content:center; gap:.5rem; font-weight:600; border-radius:9999px; line-height:1.2; padding:.875rem 1.25rem; cursor:pointer; text-decoration:none; transition:all .2s ease, transform .06s ease; user-select:none; box-shadow:0 6px 16px rgba(0,0,0,.08); will-change:transform; }
+    .btn:focus-visible{outline:none; box-shadow:0 0 0 4px var(--ring), 0 8px 24px rgba(0,0,0,.12)}
+    .btn:active{transform:translateY(1px)}
+    .btn[disabled], .btn:disabled{opacity:.6; cursor:not-allowed; box-shadow:none}
+    .btn-lg{padding:1rem 1.5rem; font-size:1.125rem}
+    .btn-sm{padding:.5rem .875rem; font-size:.875rem}
+    .btn-primary{ color:#fff; background:linear-gradient(135deg,var(--teal-600),var(--cyan-500)); border:1px solid rgb(13 148 136 / 20%); }
+    .btn-primary:hover{filter:brightness(1.03); transform:translateY(-2px); box-shadow:0 10px 24px rgba(6,182,212,.28)}
+    .btn-secondary{ color:#0f172a; background:#fff; border:1px solid #e5e7eb; }
+    .btn-secondary:hover{background:#f8fafc; border-color:#cbd5e1; transform:translateY(-2px)}
+    .btn-outline{ color:var(--teal-700); background:transparent; border:1.5px solid rgba(13,148,136,.55); }
+    .btn-outline:hover{background:rgba(13,148,136,.06); border-color:rgba(13,148,136,.75); transform:translateY(-2px)}
+    .btn-white{ color:#111827; background:rgba(255,255,255,.92); border:1px solid #e5e7eb; }
+    .btn-white:hover{background:#fff; transform:translateY(-2px)}
+    .btn-accent{ color:#111827; background:linear-gradient(135deg,var(--yellow-300),var(--yellow-400)); border:1px solid rgba(251,191,36,.45); }
+    .btn-accent:hover{filter:brightness(1.02); transform:translateY(-2px); box-shadow:0 10px 24px rgba(251,191,36,.35)}
+    .btn-link{ color:#0d9488; font-weight:600; padding:0; border:none; box-shadow:none; border-radius:0 }
+    .btn-link .arrow{ transform:translateX(0); transition:transform .2s ease }
+    .btn-link:hover .arrow{ transform:translateX(2px) }
+    .btn-shine{ position:relative; overflow:hidden }
+    .btn-shine::after{ content:""; position:absolute; inset:-1px; background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent); transform:translateX(-120%) skewX(-20deg); transition:transform .6s ease }
+    .btn-shine:hover::after{ transform:translateX(120%) skewX(-20deg) }
+
+    @media (prefers-reduced-motion: reduce){
+      .btn, .btn *{ transition:none !important } .btn:hover{ transform:none !important } .btn-shine::after{ display:none }
+    }
+
+    /* --- HERO ++ Aurora + Parallaxe --- */
+    .hero-wrap{ position:relative; min-height:100vh; isolation:isolate; overflow:hidden; }
+    .hero-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; }
+    .hero-overlay{
+      position:absolute; inset:0; z-index:0;
+      background:
+        radial-gradient(80% 60% at 20% 40%, rgba(0,0,0,.65) 0%, rgba(0,0,0,.45) 40%, rgba(0,0,0,.25) 70%, transparent 100%),
+        linear-gradient(90deg, rgba(0,0,0,.45), rgba(0,0,0,.25));
+    }
+    .hero-grid,.shape-divider{ z-index:2; position:relative; }
+
+    .aurora{ position:absolute; left:0; right:0; top:-12%; bottom:-12%; pointer-events:none; overflow:hidden; z-index:1; }
+    .aurora span{
+      position:absolute; filter:blur(60px); opacity:.7; mix-blend-mode:screen;
+      will-change:transform; animation:drift 18s ease-in-out infinite alternate;
+    }
+    .aurora .b1{width:48vmax;height:48vmax;top:-8%;left:-6%;
+      background:radial-gradient(closest-side, rgba(20,184,166,.65), transparent 60%)}
+    .aurora .b2{width:42vmax;height:42vmax;bottom:-12%;left:10%;
+      background:radial-gradient(closest-side, rgba(6,182,212,.55), transparent 60%); animation-duration:22s}
+    .aurora .b3{width:46vmax;height:46vmax;top:-6%;right:-8%;
+      background:radial-gradient(closest-side, rgba(37,99,235,.45), transparent 60%); animation-duration:26s}
+    @keyframes drift{ 0%{transform:translate3d(0,0,0) scale(1)} 100%{transform:translate3d(4%,-3%,0) scale(1.08)} }
+
+    :root{ --rx:0deg; --ry:0deg; }
+    .parallax-tilt{ transform-style:preserve-3d; transform: perspective(1000px) rotateX(var(--rx)) rotateY(var(--ry)); transition:transform .2s ease }
+
+    /* Scroll indicator */
+    .scroll-indicator{position:absolute; left:50%; bottom:28px; transform:translateX(-50%); z-index:3; color:#fff; opacity:.9}
+    .mouse{width:26px;height:42px;border:2px solid rgba(255,255,255,.8);border-radius:16px;position:relative;margin:0 auto}
+    .wheel{width:3px;height:7px;background:#fff;border-radius:2px;position:absolute;left:50%;transform:translateX(-50%);top:8px;animation:wheel 1.6s ease-in-out infinite}
+    @keyframes wheel{0%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,14px)}}
+
+    /* Shape divider */
+    .shape-divider{ position:absolute; left:0; right:0; bottom:-1px; overflow:hidden; }
+    .shape-divider svg{ display:block; width:100%; height:80px; }
+
+    /* Galerie */
+    .gallery-card{position:relative;overflow:hidden;border-radius:1rem}
+    .gallery-card img{display:block; width:100%; height:100%; transition:transform .5s cubic-bezier(.22,.61,.36,1)}
+    .gallery-card:hover img{transform:scale(1.06)}
+    .gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65),rgba(0,0,0,.2),transparent);opacity:0;transition:opacity .3s ease}
+    .gallery-card:hover .gallery-overlay,.gallery-card:focus-within .gallery-overlay{opacity:1}
+    .gallery-caption{position:absolute;left:1rem;bottom:1rem;color:#fff;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.5)}
+    .gallery-zoom{position:absolute;right:.75rem;top:.75rem;background:rgba(255,255,255,.9);border-radius:.75rem;padding:.4rem;box-shadow:0 6px 18px rgba(0,0,0,.15);opacity:0;transform:translateY(-6px);transition:all .25s ease}
+    .gallery-card:hover .gallery-zoom{opacity:1;transform:translateY(0)}
+    .lightbox{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:60;padding:2rem}
+    .lightbox:target{display:flex}
+    .lightbox img{max-width:min(92vw,1200px);max-height:85vh;border-radius:1rem;box-shadow:0 25px 50px rgba(0,0,0,.5)}
+    .lightbox .close{position:absolute;top:1.25rem;right:1.25rem;background:#fff;color:#111;border-radius:.75rem;padding:.5rem .7rem;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.25);text-decoration:none}
+    .lightbox .close:focus{outline:2px solid #10b981;outline-offset:2px}
+
+    /* Carte */
+    .map-wrap{position:relative;padding-bottom:56.25%;height:0}
+    .map-wrap iframe{position:absolute;inset:0;width:100%;height:100%}
+
+    /* Form */
+    .input-base{border:1px solid #e5e7eb;border-radius:.75rem;padding:.75rem .875rem}
+    .input-base:focus{outline:none;box-shadow:0 0 0 4px rgba(45,212,191,.25);border-color:#14b8a6}
+
+    /* Carrousel d'avis */
+    .no-scrollbar::-webkit-scrollbar{display:none}
+    .no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+    .review-card{scroll-snap-align:center}
+    #reviews-track{ overflow-y:hidden; max-width:100%; }
+    
+    @media (prefers-reduced-motion: reduce){
+      .aurora span{animation:none}
+      .parallax-tilt{transform:none !important}
+      .wheel{animation:none}
+    }
+
+    /* Carte verre (panneau de droite) */
+    .glass{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.22);
+      backdrop-filter:saturate(140%) blur(14px);
+      -webkit-backdrop-filter:saturate(140%) blur(14px);
+      box-shadow:0 24px 60px rgba(0,0,0,.25);
+    }
+
+    /* H1 style explicite si nécessaire */
+    .hero-title{ font-family:"Fraunces",serif; font-weight:800; letter-spacing:-0.01em; }
+  </style>
+</head>
+
+<body class="text-gray-800 antialiased">
+  <!-- HEADER -->
+  <header class="gradient-bg text-white shadow-xl">
+    <div class="mx-auto max-w-7xl px-6 flex items-center justify-between h-20 relative">
+      <a href="#accueil" class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-xl font-bold shadow-md text-teal-700">LA</div>
+        <div>
+          <p class="text-xl font-bold leading-tight tracking-wide">Camping La Plage</p>
+          <p class="text-xs text-gray-100">Argelès-sur-Mer • ★★★</p>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 font-medium">
+        <a href="#hebergements" class="hover:text-yellow-200 transition">Hébergements</a>
+        <a href="#services" class="hover:text-yellow-200 transition">Services</a>
+        <a href="#activites" class="hover:text-yellow-200 transition">Activités</a>
+        <a href="#galerie" class="hover:text-yellow-200 transition">Galerie</a>
+        <a href="#acces" class="hover:text-yellow-200 transition">Accès</a>
+        <a href="#contact" class="pulse-button ml-4 inline-flex items-center px-6 py-2 rounded-full bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 text-gray-900 font-bold shadow-lg transform hover:scale-110 transition duration-300">✨ Réserver ✨</a>
+      </nav>
+      <div class="md:hidden">
+        <button class="p-2 rounded-md bg-teal-800 hover:bg-teal-900 focus:outline-none" aria-label="Ouvrir le menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO ++ -->
+  <section id="accueil" class="hero-wrap text-white">
+    <video class="hero-video" autoplay muted loop playsinline poster="img/hero-fallback.jpg">
+      <source src="img/videoplayback.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+
+    <!-- Aurora -->
+    <div class="aurora" aria-hidden="true">
+      <span class="b1"></span>
+      <span class="b2"></span>
+      <span class="b3"></span>
+    </div>
+
+    <div class="hero-grid mx-auto max-w-7xl px-4 grid lg:grid-cols-12 gap-10 items-center min-h-[calc(100vh-5rem)]">
+      <!-- Colonne gauche -->
+      <div class="lg:col-span-7 parallax-tilt">
+        <span class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] sm:text-xs uppercase tracking-wider font-semibold bg-white/15 ring-1 ring-white/30">
+          ★★★ Argelès-sur-Mer • 200 m de la mer
+        </span>
+
+
+
+<h1 class="hero-title text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] mt-6 text-5xl sm:text-6xl xl:text-7xl leading-tight tracking-tight">
+  La Méditerranée à deux pas,<br class="hidden md:block"> le calme à l’ombre des pins
+</h1>
+
+
+        <p class="mt-6 text-[17px] sm:text-xl text-white/95 max-w-2xl">
+          Vacances au <strong>Camping La Plage</strong> : emplacements ombragés, mobil-homes confort et lodges glamping — à deux pas de la plage.
+        </p>
+
+        <!-- (CTAs retirés) -->
+
+        <div class="mt-8 flex flex-wrap items-center gap-3 text-sm text-teal-50/90">
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 ring-1 ring-white/25">Annulation flexible</span>
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 ring-1 ring-white/25">Piscine & snack</span>
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 ring-1 ring-white/25">Wi-Fi zones</span>
+        </div>
+      </div>
+
+      <!-- Colonne droite -->
+      <div class="lg:col-span-5">
+        <div class="glass rounded-3xl p-8">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 ring-1 ring-white/30 text-sm mb-4">
+            <span class="text-yellow-300">★★★★☆</span>
+            <span>4,3/5 • 214 avis</span>
+          </div>
+
+          <h3 class="text-2xl font-bold mb-5">Pourquoi choisir La Plage&nbsp;?</h3>
+          <ul class="space-y-3 text-lg">
+            <li class="flex items-start gap-3"><span class="inline-flex justify-center items-center w-7 h-7 rounded-md bg-white/30">✔</span> Accès plage à 200&nbsp;m</li>
+            <li class="flex items-start gap-3"><span class="inline-flex justify-center items-center w-7 h-7 rounded-md bg-white/30">✔</span> Camping 3&nbsp;étoiles familial</li>
+            <li class="flex items-start gap-3"><span class="inline-flex justify-center items-center w-7 h-7 rounded-md bg-white/30">✔</span> Ombrage sous les pins</li>
+            <li class="flex items-start gap-3"><span class="inline-flex justify-center items-center w-7 h-7 rounded-md bg-white/30">✔</span> Mobil-homes & lodges confort</li>
+          </ul>
+          <!-- (Boutons “Voir les hébergements” / “Nous trouver” retirés) -->
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <div class="mouse"><div class="wheel"></div></div>
+    </div>
+
+    <div class="shape-divider" aria-hidden="true">
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="grad-hero" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#F8FAFC"/>
+            <stop offset="100%" stop-color="#E6FFFB"/>
+          </linearGradient>
+        </defs>
+        <path d="M0,40 C240,120 480,0 720,40 C960,80 1200,60 1440,10 L1440,100 L0,100 Z" fill="url(#grad-hero)"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- HÉBERGEMENTS -->
+  <section id="hebergements" class="py-24 bg-gradient-to-b from-white to-teal-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <header class="text-center max-w-2xl mx-auto mb-20">
+        <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-4 leading-tight tracking-tight">Hébergements & Emplacements</h2>
+        <p class="text-lg text-gray-600">Découvrez nos différentes options pour un séjour tout confort au plus près de la nature.</p>
+      </header>
+
+      <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Emplacements nature -->
+        <article class="bg-white border rounded-3xl shadow-md hover:shadow-xl overflow-hidden transform hover:-translate-y-2 hover:scale-[1.02] transition duration-300">
+          <img src="img/emplacement.jpg" alt="Emplacements nature ombragés pour tentes, caravanes et camping-cars" class="h-64 w-full object-cover">
+          <div class="p-8">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white text-teal-700 ring-1 ring-teal-200">
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3l3.5 5H13l2.5 4H13l2.5 4H8.5L11 12H8.5L11 8H8.5L12 3z"/><path d="M12 17v4"/>
+                </svg>
+              </span>
+              <h3 class="font-bold text-2xl text-gray-800 leading-snug">Emplacements nature</h3>
+            </div>
+            <p class="text-gray-600">Grands emplacements ombragés (80–120 m²) adaptés aux tentes, caravanes et camping-cars.</p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-sm border border-teal-200">80–120 m²</span>
+              <span class="px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-sm border border-teal-200">Ombre & pins</span>
+            </div>
+            <a href="#reservation" class="btn btn-outline btn-sm mt-5">En savoir plus <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+        <!-- Mobil-homes -->
+        <article class="bg-white border rounded-3xl shadow-md hover:shadow-xl overflow-hidden transform hover:-translate-y-2 hover:scale-[1.02] transition duration-300">
+          <img src="img/mobilhome.jpg" alt="Mobil-home confortable avec terrasse en bois et climatisation" class="h-64 w-full object-cover">
+          <div class="p-8">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white text-teal-700 ring-1 ring-teal-200">
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 11.5L12 4l9 7.5"/><path d="M5 10.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9.5"/>
+                </svg>
+              </span>
+              <h3 class="font-bold text-2xl text-gray-800 leading-snug">Mobil-homes Confort</h3>
+            </div>
+            <p class="text-gray-600">Mobil-homes 2 à 6 personnes, climatisés avec terrasse bois et cuisine équipée.</p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-sm border border-teal-200">2–6 pers.</span>
+              <span class="px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-sm border border-teal-200">Clim & terrasse</span>
+            </div>
+            <a href="#reservation" class="btn btn-outline btn-sm mt-5">Découvrir <span class="arrow">→</span></a>
+          </div>
+        </article>
+
+        <!-- Lodges -->
+        <article class="bg-white border rounded-3xl shadow-md hover:shadow-xl overflow-hidden transform hover:-translate-y-2 hover:scale-[1.02] transition duration-300">
+          <img src="img/lodge.jpg" alt="Lodge nature type glamping au cœur des pins" class="h-64 w-full object-cover">
+          <div class="p-8">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-white text-teal-700 ring-1 ring-teal-200">
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 20l9-12 9 12"/><path d="M3 20h18"/><path d="M12 8v12"/>
+                </svg>
+              </span>
+              <h3 class="font-bold text-2xl text-gray-800 leading-snug">Lodges Nature</h3>
+            </div>
+            <p class="text-gray-600">Tentes lodges tout équipées pour une expérience glamping unique au cœur des pins.</p>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span class="px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-sm border border-teal-200">Glamping</span>
+              <span class="px-3 py-1 rounded-full bg-teal-50 text-teal-700 text-sm border border-teal-200">Tout équipé</span>
+            </div>
+            <a href="#reservation" class="btn btn-outline btn-sm mt-5">Voir les lodges <span class="arrow">→</span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section id="galerie" class="py-24 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <header class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-4">Galerie</h2>
+        <p class="text-lg text-gray-600">Un aperçu du camping, des espaces et des moments à vivre.</p>
+      </header>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <a href="#g1" class="gallery-card block border shadow-md focus:outline-none focus:ring-4 ring-yellow-300">
+          <img src="img/Philomène-Reis-La-Plage-Activités (23).JPG.jpg" alt="Animations en journée au Camping La Plage" loading="lazy" decoding="async" class="h-72 w-full object-cover">
+          <span class="gallery-overlay"></span><span class="gallery-caption">Animations & activités</span>
+          <span class="gallery-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg></span>
+        </a>
+        <a href="#g2" class="gallery-card block border shadow-md focus:outline-none focus:ring-4 ring-yellow-300">
+          <img src="img/Gallerie_22.jpg" alt="Allées ombragées au cœur des pins" loading="lazy" decoding="async" class="h-72 w-full object-cover">
+          <span class="gallery-overlay"></span><span class="gallery-caption">Sous les pins</span>
+          <span class="gallery-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg></span>
+        </a>
+        <a href="#g3" class="gallery-card block border shadow-md focus:outline-none focus:ring-4 ring-yellow-300">
+          <img src="img/Camping-La-Plage-Kelimaj-le-Snack (1)_0.jpg" alt="Espace snack convivial" loading="lazy" decoding="async" class="h-72 w-full object-cover">
+          <span class="gallery-overlay"></span><span class="gallery-caption">Snack & détente</span>
+          <span class="gallery-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg></span>
+        </a>
+        <a href="#g4" class="gallery-card block border shadow-md focus:outline-none focus:ring-4 ring-yellow-300">
+          <img src="img/Camping-La-Plage-Kelimaj-La-Piscine (19).jpg" alt="Piscine du camping" loading="lazy" decoding="async" class="h-72 w-full object-cover">
+          <span class="gallery-overlay"></span><span class="gallery-caption">Piscine</span>
+          <span class="gallery-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg></span>
+        </a>
+        <a href="#g5" class="gallery-card block border shadow-md focus:outline-none focus:ring-4 ring-yellow-300">
+          <img src="img/Camping-La-Plage-Kelimaj-Aire-de-jeux-enfants (7).jpg" alt="Aire de jeux pour enfants" loading="lazy" decoding="async" class="h-72 w-full object-cover">
+          <span class="gallery-overlay"></span><span class="gallery-caption">Aire de jeux</span>
+          <span class="gallery-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg></span>
+        </a>
+        <a href="#g6" class="gallery-card block border shadow-md focus:outline-none focus:ring-4 ring-yellow-300">
+          <img src="img/2019_Vue aérienne depuis le Camping La Plage Argelès_06.jpg" alt="Vue aérienne du camping à proximité de la mer" loading="lazy" decoding="async" class="h-72 w-full object-cover">
+          <span class="gallery-overlay"></span><span class="gallery-caption">Vue aérienne</span>
+          <span class="gallery-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="M21 21l-4.3-4.3"></path></svg></span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Lightboxes -->
+    <div id="g1" class="lightbox" aria-modal="true" role="dialog">
+      <a href="#galerie" class="close" aria-label="Fermer la vue">✕</a>
+      <img src="img/Philomène-Reis-La-Plage-Activités (23).JPG.jpg" alt="Animations en journée au Camping La Plage">
+    </div>
+    <div id="g2" class="lightbox" aria-modal="true" role="dialog">
+      <a href="#galerie" class="close" aria-label="Fermer la vue">✕</a>
+      <img src="img/Gallerie_22.jpg" alt="Allées ombragées au cœur des pins">
+    </div>
+    <div id="g3" class="lightbox" aria-modal="true" role="dialog">
+      <a href="#galerie" class="close" aria-label="Fermer la vue">✕</a>
+      <img src="img/Camping-La-Plage-Kelimaj-le-Snack (1)_0.jpg" alt="Espace snack convivial">
+    </div>
+    <div id="g4" class="lightbox" aria-modal="true" role="dialog">
+      <a href="#galerie" class="close" aria-label="Fermer la vue">✕</a>
+      <img src="img/Camping-La-Plage-Kelimaj-La-Piscine (19).jpg" alt="Piscine du camping">
+    </div>
+    <div id="g5" class="lightbox" aria-modal="true" role="dialog">
+      <a href="#galerie" class="close" aria-label="Fermer la vue">✕</a>
+      <img src="img/Camping-La-Plage-Kelimaj-Aire-de-jeux-enfants (7).jpg" alt="Aire de jeux pour enfants">
+    </div>
+    <div id="g6" class="lightbox" aria-modal="true" role="dialog">
+      <a href="#galerie" class="close" aria-label="Fermer la vue">✕</a>
+      <img src="img/2019_Vue aérienne depuis le Camping La Plage Argelès_06.jpg" alt="Vue aérienne du camping à proximité de la mer">
+    </div>
+  </section>
+
+  <!-- ACCÈS -->
+  <section id="acces" class="py-24 bg-gradient-to-b from-teal-50 to-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl sm:text-5xl font-extrabold text-center mb-16">Accès & contact</h2>
+
+      <div class="grid lg:grid-cols-2 gap-10">
+        <!-- Coordonnées -->
+        <div class="bg-white border rounded-3xl p-10 shadow-md">
+          <h3 class="font-bold text-2xl mb-6">Adresse & coordonnées</h3>
+          <address class="not-italic space-y-4 text-gray-700">
+            <p class="flex items-start gap-3">
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white text-teal-700 ring-1 ring-teal-200">
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.2 7-11.2A7 7 0 0 0 5 9.8C5 15.8 12 21 12 21z"/><circle cx="12" cy="9.8" r="2.2"/></svg>
+              </span>
+              Chemin de la Plage, 66700 Argelès-sur-Mer
+            </p>
+            <p class="flex items-center gap-3">
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white text-teal-700 ring-1 ring-teal-200">
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v2a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.3 19.3 0 0 1-6-6A19.8 19.8 0 0 1 2.9 3.8 2 2 0 0 1 4.9 2h2a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2L8 9.4a16 16 0 0 0 6.2 6.2l1.1-1a2 2 0 0 1 2-.5c.9.3 1.8.5 2.6.6a2 2 0 0 1 1.7 2.2z"/></svg>
+              </span>
+              <a href="tel:+33400000000" class="text-teal-700 underline">+33 (0)4 00 00 00 00</a>
+            </p>
+            <p class="flex items-center gap-3">
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white text-teal-700 ring-1 ring-teal-200">
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"/><path d="M22 8l-10 7L2 8"/></svg>
+              </span>
+              <a href="mailto:contact@camping-laplage-argeles.fr" class="text-teal-700 underline">contact@camping-laplage-argeles.fr</a>
+            </p>
+          </address>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Chemin+de+la+Plage%2C+66700+Argel%C3%A8s-sur-Mer" class="btn btn-primary btn-sm" target="_blank" rel="noopener noreferrer">Itinéraire</a>
+            <a href="https://maps.google.com/?q=Chemin+de+la+Plage%2C+66700+Argel%C3%A8s-sur-Mer" class="btn btn-outline btn-sm" target="_blank" rel="noopener noreferrer">Ouvrir dans Google Maps</a>
+          </div>
+        </div>
+
+        <!-- Carte -->
+        <div class="rounded-3xl overflow-hidden shadow-lg border">
+          <div class="map-wrap">
+            <iframe title="Carte - Camping La Plage Argelès"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2889.2098079231516!2d3.0314!3d42.5448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12bb048c25cfcd25%3A0x40365ce2bdfac60!2sArgel%C3%A8s-sur-Mer!5e0!3m2!1sfr!2sfr!4v1610000000000!5m2!1sfr!2sfr"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0;" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AVIS GOOGLE (statique) -->
+  <section class="py-16 bg-white">
+    <div class="mx-auto max-w-3xl px-4 text-center">
+      <div class="flex items-center justify-center gap-3 mb-4">
+        <img src="https://www.gstatic.com/images/branding/product/1x/google_g_48dp.png" alt="Logo Google" class="w-8 h-8">
+        <h3 class="text-2xl font-bold text-gray-800">Avis Google</h3>
+      </div>
+      <div class="flex items-center justify-center gap-2 text-yellow-400 text-3xl mb-2">★★★★☆</div>
+      <p class="text-lg text-gray-700 mb-4"><strong>4,3/5</strong> basé sur <span class="font-semibold">214 avis</span></p>
+      <a href="https://www.google.com/maps/place/Camping+La+Plage+Argel%C3%A8s" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold hover:opacity-90 shadow-lg transition">Lire les avis sur Google →</a>
+    </div>
+  </section>
+
+  <!-- AVIS / TÉMOIGNAGES -->
+  <section id="avis" class="py-24 bg-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <header class="flex items-end justify-between gap-6 mb-8">
+        <div>
+          <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-800">Avis de nos campeurs</h2>
+          <p class="text-lg text-gray-600 mt-2">Des séjours au calme, à deux pas de la mer.</p>
+        </div>
+        <div class="hidden sm:flex items-center gap-2">
+          <button id="reviews-prev" class="p-3 rounded-xl border border-gray-300 bg-white hover:bg-gray-50 shadow-sm" aria-label="Avis précédent" aria-controls="reviews-track">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button id="reviews-next" class="p-3 rounded-xl border border-gray-300 bg-white hover:bg-gray-50 shadow-sm" aria-label="Avis suivant" aria-controls="reviews-track">
+            <svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <div id="reviews-track" class="flex gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory scroll-smooth px-2" role="region" aria-label="Carrousel des avis" tabindex="0">
+        <article class="review-card shrink-0 w-80 sm:w-96 bg-white border rounded-3xl p-6 shadow-md">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-teal-50 to-teal-100 text-teal-700 flex items-center justify-center font-semibold">AM</div>
+            <div><p class="font-semibold text-gray-800">Alice M.</p><p class="text-sm text-gray-500">Lodge • Août 2024</p></div>
+          </div>
+          <div class="mt-3 flex items-center gap-1 text-yellow-400" aria-label="Note 5 sur 5"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <blockquote class="mt-4 text-gray-700 leading-relaxed">Super séjour ! Emplacement idéal à 200 m de la plage, équipe aux petits soins. Les pins apportent une vraie fraîcheur.</blockquote>
+          <div class="mt-4"><span class="inline-flex items-center px-2 py-1 rounded-full bg-teal-50 text-teal-700 text-xs border border-teal-200">Séjour vérifié</span></div>
+        </article>
+
+        <article class="review-card shrink-0 w-80 sm:w-96 bg-white border rounded-3xl p-6 shadow-md">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-teal-50 to-teal-100 text-teal-700 flex items-center justify-center font-semibold">JB</div>
+            <div><p class="font-semibold text-gray-800">Julien B.</p><p class="text-sm text-gray-500">Mobil-home • Juil. 2024</p></div>
+          </div>
+          <div class="mt-3 flex items-center gap-1 text-yellow-400" aria-label="Note 4 sur 5"><span>★</span><span>★</span><span>★</span><span>★</span><span class="text-gray-300">★</span></div>
+          <blockquote class="mt-4 text-gray-700 leading-relaxed">Mobil-home propre et bien équipé. Terrasse top pour les petits-déj. Piscine agréable, enfants ravis.</blockquote>
+          <div class="mt-4"><span class="inline-flex items-center px-2 py-1 rounded-full bg-teal-50 text-teal-700 text-xs border border-teal-200">Séjour vérifié</span></div>
+        </article>
+
+        <article class="review-card shrink-0 w-80 sm:w-96 bg-white border rounded-3xl p-6 shadow-md">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-teal-50 to-teal-100 text-teal-700 flex items-center justify-center font-semibold">SR</div>
+            <div><p class="font-semibold text-gray-800">Sofia R.</p><p class="text-sm text-gray-500">Emplacement • Sept. 2024</p></div>
+          </div>
+          <div class="mt-3 flex items-center gap-1 text-yellow-400" aria-label="Note 5 sur 5"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <blockquote class="mt-4 text-gray-700 leading-relaxed">Emplacements spacieux et ombragés, sanitaires nickel. Accès rapide à la plage et au snack. On reviendra !</blockquote>
+          <div class="mt-4"><span class="inline-flex items-center px-2 py-1 rounded-full bg-teal-50 text-teal-700 text-xs border border-teal-200">Séjour vérifié</span></div>
+        </article>
+
+        <article class="review-card shrink-0 w-80 sm:w-96 bg-white border rounded-3xl p-6 shadow-md">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-teal-50 to-teal-100 text-teal-700 flex items-center justify-center font-semibold">TM</div>
+            <div><p class="font-semibold text-gray-800">Thomas M.</p><p class="text-sm text-gray-500">Lodge • Mai 2025</p></div>
+          </div>
+          <div class="mt-3 flex items-center gap-1 text-yellow-400" aria-label="Note 5 sur 5"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          <blockquote class="mt-4 text-gray-700 leading-relaxed">Le glamping au calme, parfait pour un week-end. Personnel accueillant et réactif. Très bon rapport qualité/prix.</blockquote>
+          <div class="mt-4"><span class="inline-flex items-center px-2 py-1 rounded-full bg-teal-50 text-teal-700 text-xs border border-teal-200">Séjour vérifié</span></div>
+        </article>
+      </div>
+
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="https://www.google.com/maps/search/?api=1&query=Camping+La+Plage+Argel%C3%A8s#reviews" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Lire plus d'avis →</a>
+        <a href="https://search.google.com/local/writereview?placeid=VOTRE_PLACE_ID" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Laisser un avis</a>
+      </div>
+    </div>
+  </section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-24 gradient-secondary text-white">
+  <div class="mx-auto max-w-7xl px-4">
+    <!-- En-tête -->
+    <header class="text-center max-w-3xl mx-auto mb-14">
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 ring-1 ring-white/20 text-sm">⏱️ Réponse sous 24–48 h ouvrées</span>
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 ring-1 ring-white/20 text-sm">🌞 Ouvert d’avril à octobre</span>
+      </div>
+      <h2 class="mt-4 text-4xl sm:text-5xl font-extrabold">Préparez votre séjour</h2>
+      <p class="mt-4 text-teal-100 text-lg">Donnez-nous vos dates, votre groupe et vos préférences. On s’occupe du reste.</p>
+    </header>
+
+    <div class="grid lg:grid-cols-2 gap-12">
+      <!-- Colonne gauche : Infos & actions -->
+      <aside class="space-y-6">
+        <div class="rounded-3xl p-8 bg-white/10 ring-1 ring-white/20 backdrop-blur">
+          <h3 class="text-2xl font-bold">Nos coordonnées</h3>
+          <ul class="mt-5 space-y-4 text-teal-100">
+            <li class="flex items-start gap-3">
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white/20 ring-1 ring-white/30">
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v2a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.3 19.3 0 0 1-6-6A19.8 19.8 0 0 1 2.9 3.8 2 2 0 0 1 4.9 2h2a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2L8 9.4a16 16 0 0 0 6.2 6.2l1.1-1a2 2 0 0 1 2-.5c.9.3 1.8.5 2.6.6a2 2 0 0 1 1.7 2.2z"/></svg>
+              </span>
+              <div>
+                <p class="font-semibold text-white">Téléphone</p>
+                <a href="tel:+33400000000" class="underline">+33 (0)4 00 00 00 00</a>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white/20 ring-1 ring-white/30">
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+              </span>
+              <div>
+                <p class="font-semibold text-white">E-mail</p>
+                <a href="mailto:contact@camping-laplage-argeles.fr" class="underline">contact@camping-laplage-argeles.fr</a>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-white/20 ring-1 ring-white/30">
+                <svg aria-hidden="true" viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <div>
+                <p class="font-semibold text-white">Adresse</p>
+                <p>Chemin de la Plage, 66700 Argelès-sur-Mer</p>
+              </div>
+            </li>
+          </ul>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="tel:+33400000000" class="btn btn-white btn-sm">Appeler</a>
+            <a href="mailto:contact@camping-laplage-argeles.fr?subject=Renseignement%20-%20Camping%20La%20Plage%20Argel%C3%A8s" class="btn btn-outline btn-sm">Écrire un e-mail</a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Chemin+de+la+Plage%2C+66700+Argel%C3%A8s-sur-Mer" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Itinéraire</a>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-6">
+          <!-- Note / avis -->
+          <div class="rounded-3xl p-6 bg-white/10 ring-1 ring-white/20 backdrop-blur">
+            <p class="text-sm text-teal-100">Satisfaction moyenne</p>
+            <div class="mt-1 flex items-center gap-2">
+              <span class="text-yellow-300 text-xl">★★★★☆</span>
+              <span class="font-semibold">4,3/5</span>
+            </div>
+            <a href="#avis" class="btn btn-white btn-sm mt-4">Lire les avis</a>
+          </div>
+          <!-- Horaires -->
+          <div class="rounded-3xl p-6 bg-white/10 ring-1 ring-white/20 backdrop-blur">
+            <p class="text-sm text-teal-100">Horaires d’accueil</p>
+            <ul class="mt-2 space-y-1">
+              <li>Lun–Ven : 9h–12h / 14h–18h</li>
+              <li>Sam : 9h–13h</li>
+              <li>Dim : fermé</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Colonne droite : Formulaire -->
+<form id="contact-form" action="https://formspree.io/f/XXXXX" method="POST"
+  class="bg-white text-gray-900 rounded-3xl p-10 border border-gray-200 shadow-xl"
+  aria-label="Formulaire de contact">
+
+        <!-- Sujet invisible pour Formspree -->
+        <input type="hidden" name="_subject" value="Demande de renseignements - Camping La Plage Argelès">
+        <input type="hidden" name="_language" value="fr">
+        <input type="hidden" name="Source" value="Formulaire site - Section Contact">
+
+        <!-- Coordonnées -->
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="relative">
+            <label for="nom" class="block text-sm font-medium">Nom <span class="text-red-600">*</span></label>
+            <span class="absolute left-3 top-10 pointer-events-none">
+              <svg viewBox="0 0 24 24" class="w-5 h-5 text-gray-400"><path fill="currentColor" d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5Z"/></svg>
+            </span>
+            <input id="nom" name="Nom" autocomplete="name" required class="input-base w-full mt-1 pl-10 placeholder-gray-400" placeholder="Dupont">
+          </div>
+          <div class="relative">
+            <label for="email" class="block text-sm font-medium">E-mail <span class="text-red-600">*</span></label>
+            <span class="absolute left-3 top-10 pointer-events-none">
+              <svg viewBox="0 0 24 24" class="w-5 h-5 text-gray-400"><path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v.4l10 6.25L22 6.4V6a2 2 0 0 0-2-2Zm0 5.2-8 5-8-5V18a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2Z"/></svg>
+            </span>
+            <input id="email" name="Email" type="email" autocomplete="email" required class="input-base w-full mt-1 pl-10 placeholder-gray-400" placeholder="vous@exemple.fr">
+          </div>
+          <div class="sm:col-span-2 relative">
+            <label for="telephone" class="block text-sm font-medium">Téléphone</label>
+            <span class="absolute left-3 top-10 pointer-events-none">
+              <svg viewBox="0 0 24 24" class="w-5 h-5 text-gray-400"><path fill="currentColor" d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 12.8 12.8 0 0 0 3.3.45 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 7a1 1 0 0 1 1-1h3.6a1 1 0 0 1 1 1 12.8 12.8 0 0 0 .45 3.3 1 1 0 0 1-.25 1Z"/></svg>
+            </span>
+            <input id="telephone" name="Téléphone" type="tel" inputmode="tel"
+                   pattern="^(?:\+33\s?|0)[1-9](?:[\s\.\-]?\d{2}){4}$"
+                   class="input-base w-full mt-1 pl-10 placeholder-gray-400"
+                   placeholder="+33 6 12 34 56 78">
+            <p class="mt-1 text-xs text-gray-500">Format FR accepté (ex. 06 12 34 56 78 ou +33 6 12 34 56 78).</p>
+          </div>
+        </div>
+
+        <!-- Préférence de contact + Créneau -->
+        <div class="mt-6 grid sm:grid-cols-2 gap-4">
+          <fieldset>
+            <legend class="block text-sm font-medium mb-2">Préférence de contact</legend>
+            <div class="grid gap-2 text-sm text-gray-700">
+              <label class="inline-flex items-center gap-2"><input type="radio" name="Préférence de contact" value="E-mail" class="text-teal-600" checked>E-mail</label>
+              <label class="inline-flex items-center gap-2"><input type="radio" name="Préférence de contact" value="Téléphone" class="text-teal-600">Téléphone</label>
+              <label class="inline-flex items-center gap-2"><input type="radio" name="Préférence de contact" value="Peu importe" class="text-teal-600">Peu importe</label>
+            </div>
+          </fieldset>
+          <div>
+            <label for="rappel" class="block text-sm font-medium">Créneau de rappel (optionnel)</label>
+            <input id="rappel" name="Créneau souhaité" type="time" class="input-base w-full mt-1">
+            <p class="mt-1 text-xs text-gray-500">Nous essayons de respecter votre préférence (lun–ven).</p>
+          </div>
+        </div>
+
+        <!-- Séjour -->
+        <fieldset class="mt-6">
+          <legend class="text-sm font-semibold text-gray-700 mb-3">Votre séjour</legend>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="relative">
+              <label for="arrivee" class="block text-sm font-medium">Arrivée</label>
+              <span class="absolute left-3 top-10 pointer-events-none">
+                <svg viewBox="0 0 24 24" class="w-5 h-5 text-gray-400"><path fill="currentColor" d="M7 2v2H5a2 2 0 0 0-2 2v2h18V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7Zm14 8H3v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V10Zm-2 4h-6v6h6v-6Z"/></svg>
+              </span>
+              <input id="arrivee" name="Arrivée" type="date" class="input-base w-full mt-1 pl-10">
+            </div>
+            <div class="relative">
+              <label for="depart" class="block text-sm font-medium">Départ</label>
+              <span class="absolute left-3 top-10 pointer-events-none">
+                <svg viewBox="0 0 24 24" class="w-5 h-5 text-gray-400"><path fill="currentColor" d="M7 2v2H5a2 2 0 0 0-2 2v2h18V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7Zm14 8H3v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V10Zm-2 4h-6v6h6v-6Z"/></svg>
+              </span>
+              <input id="depart" name="Départ" type="date" class="input-base w-full mt-1 pl-10">
+            </div>
+            <div>
+              <label for="adultes" class="block text-sm font-medium">Adultes</label>
+              <input id="adultes" name="Adultes" type="number" min="1" step="1" inputmode="numeric" class="input-base w-full mt-1" placeholder="2">
+            </div>
+            <div>
+              <label for="enfants" class="block text-sm font-medium">Enfants</label>
+              <input id="enfants" name="Enfants" type="number" min="0" step="1" inputmode="numeric" class="input-base w-full mt-1" placeholder="0">
+            </div>
+            <div class="sm:col-span-2">
+              <label for="hebergement" class="block text-sm font-medium">Hébergement souhaité</label>
+              <select id="hebergement" name="Hébergement" class="input-base w-full mt-1 bg-white">
+                <option>Emplacement nature</option>
+                <option>Mobil-home Confort</option>
+                <option>Lodge Nature</option>
+                <option>Indifférent / Conseillez-moi</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Message -->
+        <div class="mt-6">
+          <label for="message" class="block text-sm font-medium">Message</label>
+          <textarea id="message" name="Message" rows="4" class="input-base w-full mt-1 placeholder-gray-400" placeholder="Précisez vos besoins (ex. lit bébé, animal, emplacement ombragé…)"></textarea>
+        </div>
+
+        <!-- RGPD -->
+        <div class="mt-4 flex items-start gap-3 text-sm text-gray-600">
+          <input id="consent" type="checkbox" class="mt-1 h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-500" required>
+          <label for="consent">J’accepte que mes données soient utilisées pour répondre à ma demande. Aucune cession à des tiers. <a href="/politique-confidentialite" class="underline">Politique de confidentialité</a>.</label>
+        </div>
+
+        <!-- Anti-spam -->
+        <div aria-hidden="true" class="hidden">
+          <label>Ne pas remplir</label>
+          <input type="text" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <!-- CTA -->
+        <button id="submitBtn" type="submit" class="btn btn-primary btn-lg btn-shine w-full mt-6">Envoyer ma demande</button>
+        <p class="mt-3 text-xs text-gray-500">Vous recevrez une copie par e-mail si vous l’indiquez.</p>
+
+        <!-- Messages de statut -->
+        <div id="formStatus" class="mt-4 text-sm hidden"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+  <!-- FOOTER -->
+  <footer class="py-10 bg-gray-900 text-gray-300 text-center">
+    <p class="tracking-wide">© 2025 Camping La Plage Argelès • Tous droits réservés.</p>
+  </footer>
+
+  <!-- Scripts -->
+<!-- Script – dates min + envoi Formspree (remplace l’ancien script d’envoi) -->
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    // ----- Dates min & cohérence arrivée/départ
+    const fmt = (d)=> d.toISOString().slice(0,10);
+    const today = new Date(); today.setHours(0,0,0,0);
+    const arrivee = document.getElementById('arrivee');
+    const depart  = document.getElementById('depart');
+    if (arrivee) arrivee.min = fmt(today);
+    if (depart)  depart.min  = fmt(today);
+    if (arrivee && depart){
+      arrivee.addEventListener('change', ()=>{
+        const d = new Date(arrivee.value || fmt(today));
+        depart.min = fmt(d);
+        if (depart.value && new Date(depart.value) < d) depart.value = depart.min;
+      });
+    }
+
+    // ----- Envoi Formspree avec fallback mailto
+    const form = document.getElementById('contact-form');
+    if (!form) return;
+    const endpoint = form.getAttribute('action') || '';
+    const statusEl = document.getElementById('formStatus');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+
+      // Honeypot
+      if (form.querySelector('input[name="website"]')?.value) return;
+
+      // Consent obligatoire
+      if (!document.getElementById('consent').checked){
+        alert("Merci d’accepter la mention RGPD.");
+        return;
+      }
+
+      // Prépare les données
+      const data = new FormData(form);
+      // Astuce : composer un body lisible pour fallback mailto et pour archive
+      const lines = [];
+      for (const [k, v] of data.entries()){
+        if (!v || k === 'website') continue;
+        lines.push(`${k}: ${v}`);
+      }
+      const plainText = lines.join('\n');
+
+      // Si pas d’endpoint Formspree renseigné -> fallback mailto
+      if (!endpoint || /\/XXXXX$/.test(endpoint)){
+        const to = 'contact@camping-laplage-argeles.fr';
+        const subject = encodeURIComponent('Demande de renseignements - Camping La Plage Argelès');
+        const body = encodeURIComponent(plainText);
+        window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+        return;
+      }
+
+      // Envoi vers Formspree
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Envoi en cours…';
+      statusEl.classList.add('hidden');
+
+      try{
+        const payload = {};
+        data.forEach((v,k)=> payload[k] = v);
+        // Optionnel : joindre aussi la version "ReadableBody"
+        payload['ReadableBody'] = plainText;
+
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Accept':'application/json', 'Content-Type':'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok){
+          form.reset();
+          // Réinitialiser contraintes dates après reset
+          if (arrivee) arrivee.min = fmt(today);
+          if (depart)  depart.min  = fmt(today);
+
+          statusEl.textContent = 'Merci ! Votre demande a bien été envoyée. Nous revenons vers vous rapidement.';
+          statusEl.className = 'mt-4 text-sm rounded-lg bg-green-50 text-green-800 border border-green-200 p-3';
+        } else {
+          statusEl.textContent = "Oups, l’envoi a échoué. Vous pouvez réessayer ou nous écrire à contact@camping-laplage-argeles.fr.";
+          statusEl.className = 'mt-4 text-sm rounded-lg bg-red-50 text-red-800 border border-red-200 p-3';
+        }
+      } catch(err){
+        statusEl.textContent = "Erreur réseau. Vérifiez votre connexion ou utilisez l’adresse e-mail ci-dessus.";
+        statusEl.className = 'mt-4 text-sm rounded-lg bg-red-50 text-red-800 border border-red-200 p-3';
+      } finally {
+        statusEl.classList.remove('hidden');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Envoyer ma demande';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Espace staff — Connexion | Camping La Plage</title>
+  <!-- Évite l’indexation par les moteurs de recherche -->
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!-- Tailwind v3 (Play CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Inter (texte) + Fraunces (titres) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body{font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:#f8fafc; color:#0f172a}
+    h1,h2,h3{font-family:"Fraunces",serif; letter-spacing:-0.01em}
+  </style>
+</head>
+
+<body>
+  <main class="min-h-screen flex items-center justify-center bg-gradient-to-br from-teal-600 via-cyan-500 to-blue-600 p-6">
+    <div class="w-full max-w-md rounded-3xl bg-white/90 backdrop-blur-md shadow-2xl border border-white/50 p-8">
+      <!-- En-tête -->
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-12 h-12 rounded-full bg-teal-600 text-white flex items-center justify-center text-xl font-bold shadow">LA</div>
+        <div>
+          <p class="text-sm text-gray-500">Camping La Plage Argelès • ★★★</p>
+          <h1 class="text-2xl font-extrabold leading-tight">Espace staff — Connexion</h1>
+        </div>
+      </div>
+
+      <p class="text-sm text-gray-600 mb-6">Accès réservé à l’équipe (stock, mobil‑homes, plannings). Merci d’utiliser vos identifiants fournis par la direction.</p>
+
+      <!-- Formulaire de connexion -->
+      <form id="staff-login-form" action="/api/staff/login" method="POST" class="space-y-4" aria-label="Formulaire de connexion staff">
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">E‑mail</label>
+          <input id="email" name="email" type="email" required autocomplete="username" class="mt-1 w-full rounded-xl border border-gray-300 bg-white px-3 py-2 shadow-sm focus:outline-none focus:ring-4 focus:ring-teal-200" placeholder="prenom.nom@camping.fr" />
+        </div>
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Mot de passe</label>
+          <input id="password" name="password" type="password" required autocomplete="current-password" class="mt-1 w-full rounded-xl border border-gray-300 bg-white px-3 py-2 shadow-sm focus:outline-none focus:ring-4 focus:ring-teal-200" placeholder="••••••••" />
+        </div>
+        <div class="flex items-center justify-between text-sm">
+          <label class="inline-flex items-center gap-2 select-none">
+            <input type="checkbox" name="remember" class="h-4 w-4 rounded border-gray-300 text-teal-600 focus:ring-teal-500" />
+            Se souvenir de moi
+          </label>
+          <a href="#" class="text-teal-700 hover:underline">Mot de passe oublié ?</a>
+        </div>
+
+        <button type="submit" id="loginBtn" class="w-full rounded-full bg-gradient-to-r from-teal-600 to-cyan-500 px-5 py-3 font-semibold text-white shadow-lg hover:opacity-95 focus:outline-none focus:ring-4 focus:ring-teal-200">Se connecter</button>
+
+        <p id="loginStatus" class="hidden text-sm mt-3 rounded-lg border p-3" aria-live="polite"></p>
+      </form>
+
+      <!-- Lien retour -->
+      <div class="mt-6 text-center">
+        <a href="/" class="inline-flex items-center gap-2 text-sm text-gray-600 hover:text-gray-800">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+          Retour au site
+        </a>
+      </div>
+
+      <!-- Note sécurité -->
+      <p class="mt-6 text-xs text-gray-500">Cette page fournit uniquement l’<strong>interface</strong> de connexion. Le traitement réel (vérification des identifiants, création de session) doit être <strong>branché côté serveur</strong> sur <code class="px-1 py-0.5 bg-gray-100 rounded">/api/staff/login</code> via HTTPS.</p>
+    </div>
+  </main>
+
+  <script>
+    // Démo : empêcher l'envoi réel si aucun back-end n'est encore branché
+    const form = document.getElementById('staff-login-form');
+    const btn = document.getElementById('loginBtn');
+    const statusEl = document.getElementById('loginStatus');
+
+    form.addEventListener('submit', function (e) {
+      // Supprimez ces 7 lignes quand votre API /api/staff/login sera prête
+      e.preventDefault();
+      btn.disabled = true;
+      btn.textContent = 'Vérification…';
+      setTimeout(() => {
+        statusEl.className = 'mt-3 text-sm rounded-lg border border-amber-200 bg-amber-50 text-amber-800 p-3';
+        statusEl.textContent = "Interface prête. Branchez le point d’entrée /api/staff/login (POST) côté serveur pour activer l’authentification.";
+        statusEl.classList.remove('hidden');
+        btn.disabled = false;
+        btn.textContent = 'Se connecter';
+      }, 700);
+    });
+
+    // Focus auto
+    document.getElementById('email').focus();
+  </script>
+</body>
+</html>
